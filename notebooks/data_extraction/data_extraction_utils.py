@@ -8,9 +8,10 @@ def data_prep_posts(api, subreddit: str, start_time, end_time, filters: list[str
         subreddit=subreddit,   # Subreddit we want to audit
         after=start_time,      # Start date
         before=end_time,       # End date
-        filter=filters))       # Column names we want to retrieve
+        filter=filters,      # Column names we want to retrieve
+        limit=1000000))
 
-    df = pd.DataFrame(posts)
+    df = pd.DataFrame([obj.d_ for obj in posts])
     df["type"] = "submission"
     return df  # Return dataframe for analysis
 
@@ -27,13 +28,13 @@ def find_stock_symbols(post: str, stock_list: list[str]):
 
     post = set(post.split())
 
-    found_stock = list(post.intersection(stock_list))
+    found_stocks_raw = post.intersection(stock_list)
 
-    if found_stock:
+    if found_stocks_raw:
 
-        if "$" in found_stock[0]:
-            return found_stock[0].replace("$", "")
-        else:
-            return found_stock[0]
+        # Deduplicate stock with and without "$"
+        found_stocks_processed = list({stock.replace("$", "") if "$" in stock else stock for stock in found_stocks_raw})
+
+        return found_stocks_processed
 
     return np.nan
