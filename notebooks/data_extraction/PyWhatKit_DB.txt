@@ -1,0 +1,15 @@
+Date: 27/5/2022
+Time: 11:39
+Phone Number: +4915737884472
+Message: ERROR - 'created_utc'
+--------------------
+Date: 27/5/2022
+Time: 11:48
+Phone Number: +4915737884472
+Message: ERROR - 'created_utc'
+--------------------
+Date: 27/5/2022
+Time: 16:4
+Phone Number: +4915737884472
+Message: ERROR - 'dict' object has no attribute 'd_'
+--------------------

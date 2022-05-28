@@ -25,7 +25,7 @@ def data_prep_comments(api, subreddit: str, start_time, end_time, filters: list[
         filter=filters,      # Column names we want to retrieve
         limit=1000000))
 
-    df = pd.DataFrame([obj.d_ for obj in posts])
+    df = pd.DataFrame(posts)
     df["type"] = "comment"
     return df  # Return dataframe for analysis
 
