@@ -1,0 +1,4 @@
+SELECT date_trunc('day', created_at), COUNT(date_trunc('day', created_at)) FROM r_wallstreetbets
+WHERE type = 'comment'
+GROUP BY date_trunc('day', created_at)
+ORDER BY date_trunc('day', created_at)
