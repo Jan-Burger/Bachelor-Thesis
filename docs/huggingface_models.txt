@@ -1,0 +1,4 @@
+https://huggingface.co/ProsusAI/finbert -> finbert trained on financial corpus
+https://huggingface.co/avichr/heBERT_sentiment_analysis -> trained on generic data
+https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment-latest -> trained on twitter data
+https://huggingface.co/cardiffnlp/twitter-xlm-roberta-base-sentiment -> multilingual trained on twitter data

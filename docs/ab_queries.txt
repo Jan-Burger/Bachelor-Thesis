@@ -2,3 +2,14 @@ SELECT date_trunc('day', created_at), COUNT(date_trunc('day', created_at)) FROM 
 WHERE type = 'comment'
 GROUP BY date_trunc('day', created_at)
 ORDER BY date_trunc('day', created_at)
+
+
+# Group by stock symbol
+select stock_symbol, count(*)
+from (
+  select unnest(stock_symbol) as stock_symbol
+  from r_wallstreetbets_stock_symbols
+) t
+
+group by stock_symbol
+order by 2 DESC;
