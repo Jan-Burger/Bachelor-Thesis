@@ -24,6 +24,17 @@ class SentimentAnalysisDataset(Dataset):
                  random_state = 42):
 
         self.df = df
+
+        # One-hot-encoding of target variable
+        dummies = pd.get_dummies(df[stratify_column_name])
+        self.df = pd.merge(
+            left=df,
+            right=dummies,
+            left_index=True,
+            right_index=True,
+        )
+        self.df.rename(columns={0.0: "Negative", 1.0: "Neutral", 2.0: "Positive"}, inplace=True)
+
         self.tokenizer = tokenizer
         self.max_token_len = max_token_len
         self.stratify_column_name = stratify_column_name
@@ -33,18 +44,17 @@ class SentimentAnalysisDataset(Dataset):
 
         # Initialize dataset and labels as None
         self.dataset = None
-        self.labels = None
 
         # Stratified train_test_split
-        self.X_train, self.X_test, self.y_train, self.y_test = self.stratified_train_test_split()
+        self.X_train, self.X_test = self.stratified_train_test_split()
 
     def __len__(self):
         return len(self.dataset)
 
     def __getitem__(self, idx):
         # Set post and label
-        post: str = str(self.dataset.iloc[idx])
-        label = self.labels.iloc[idx]
+        post: str = str(self.dataset.iloc[idx]["post"])
+        binary_label = self.dataset.iloc[idx][["Negative", "Neutral", "Positive"]].to_list()
 
         # Tokenize post
         tokens = self.tokenizer.encode_plus(
@@ -62,22 +72,25 @@ class SentimentAnalysisDataset(Dataset):
             'input_ids': tokens['input_ids'].flatten(),
             'attention_mask': tokens['attention_mask'].flatten(),
             'token_type_ids': tokens["token_type_ids"].flatten(),
-            'labels': torch.FloatTensor(label)
+            'labels': torch.FloatTensor(binary_label)
         }
 
     def stratified_train_test_split(self):
         X = self.df # Contains all columns.
         y = self.df[[self.stratify_column_name]] # Dataframe of just the column on which to stratify.
 
-        # Split original dataframe into train and temp dataframes.
-        X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, test_size=(1.0 - self.frac_train),random_state=self.random_state)
+        # Extract binary labels from dataframe
 
-        return X_train, X_test, y_train, y_test
+
+        # Split original dataframe into train and temp dataframes.
+        X_train, X_test, _, _ = train_test_split(X, y, stratify=y, test_size=(1.0 - self.frac_train),random_state=self.random_state)
+
+        return X_train, X_test
 
     def set_fold(self, type: str):
         # It's important to call this method before using the dataset
         if type == DatasetType.TRAIN:
-            self.dataset, self.labels = self.X_train, self.y_train
+            self.dataset = self.X_train
         if type == DatasetType.TEST:
-            self.dataset, self.labels = self.X_test, self.y_test
+            self.dataset = self.X_test
         return self
