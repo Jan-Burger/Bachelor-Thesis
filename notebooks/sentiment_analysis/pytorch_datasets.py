@@ -54,7 +54,7 @@ class SentimentAnalysisDataset(Dataset):
     def __getitem__(self, idx):
         # Set post and label
         post: str = str(self.dataset.iloc[idx]["post"])
-        binary_label = self.dataset.iloc[idx][["Negative", "Neutral", "Positive"]].to_list()
+        binary_label = self.dataset.iloc[idx][["Positive", "Negative", "Neutral"]].to_list()
 
         # Tokenize post
         tokens = self.tokenizer.encode_plus(
@@ -69,10 +69,10 @@ class SentimentAnalysisDataset(Dataset):
         )
 
         return {
-            'input_ids': tokens['input_ids'].flatten(),
-            'attention_mask': tokens['attention_mask'].flatten(),
-            'token_type_ids': tokens["token_type_ids"].flatten(),
-            'labels': torch.FloatTensor(binary_label)
+            'input_ids': tokens['input_ids'].flatten().to(torch.int32),
+            'attention_mask': tokens['attention_mask'].flatten().to(torch.int32),
+            'token_type_ids': tokens["token_type_ids"].flatten().to(torch.int32),
+            'labels': torch.FloatTensor(binary_label).to(torch.float16)
         }
 
     def stratified_train_test_split(self):
