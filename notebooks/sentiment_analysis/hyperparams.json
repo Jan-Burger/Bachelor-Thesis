@@ -4,6 +4,6 @@
     "batch_size": 32,
     "dropout": 0.1,
     "optimizer": "Adam",
-    "epochs": 6
+    "epochs": 10
   }
 }

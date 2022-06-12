@@ -1,0 +1,23 @@
+{
+    "os": "Windows-10-10.0.19044-SP0",
+    "python": "3.9.7",
+    "heartbeatAt": "2022-06-12T17:19:45.245335",
+    "startedAt": "2022-06-12T17:19:43.850760",
+    "docker": null,
+    "gpu": "NVIDIA GeForce RTX 3060",
+    "gpu_count": 1,
+    "cpu_count": 16,
+    "cuda": null,
+    "args": null,
+    "state": "running",
+    "program": "notebooks/sentiment_analysis/transformer_finetuning.ipynb",
+    "root": "C:/Users/janbu/Desktop/Bachelor_Thesis",
+    "git": {
+        "remote": "https://github.com/Jan-Burger/Bachelor-Thesis.git",
+        "commit": "fd7cd85dd1947ef2cf8a73494dc9b9787fcd085e"
+    },
+    "email": "jan.burger98@web.de",
+    "host": "DESKTOP-NEA5UOK",
+    "username": "janbu",
+    "executable": "C:\\Users\\janbu\\anaconda3\\envs\\thesis\\python.exe"
+}
