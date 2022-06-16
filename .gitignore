@@ -33,7 +33,7 @@ var/
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Unit test / coverage reports
+# Unit sentiment_analysis / coverage reports
 htmlcov/
 .tox/
 .coverage
@@ -89,3 +89,6 @@ target/
 
 #config.yaml file
 config.yaml
+
+# Models
+models/sentiment_analysis
