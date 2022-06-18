@@ -5,5 +5,33 @@
     "dropout": 0.1,
     "optimizer": "Adam",
     "epochs": 10
+  },
+  "finiteautomata/bertweet-base-sentiment-analysis": {
+    "lr": 1e-5,
+    "batch_size": 32,
+    "dropout": null,
+    "optimizer": "Adam",
+    "epochs": 10
+  },
+  "avichr/heBERT_sentiment_analysis": {
+    "lr": 1e-5,
+    "batch_size": 32,
+    "dropout": null,
+    "optimizer": "Adam",
+    "epochs": 10
+  },
+  "cardiffnlp/twitter-roberta-base-sentiment-latest": {
+    "lr": 1e-5,
+    "batch_size": 32,
+    "dropout": null,
+    "optimizer": "Adam",
+    "epochs": 10
+  },
+  "cardiffnlp/twitter-xlm-roberta-base-sentiment": {
+    "lr": 1e-5,
+    "batch_size": 32,
+    "dropout": null,
+    "optimizer": "Adam",
+    "epochs": 10
   }
 }
