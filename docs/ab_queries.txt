@@ -13,3 +13,11 @@ from (
 
 group by stock_symbol
 order by 2 DESC;
+
+
+
+# SElect specific post for a specific stock dorm db
+SELECT created_at, post, stock_symbol
+FROM r_wallstreetbets_stock_symbols
+WHERE 'GME' = ANY(stock_symbol)
+ORDER BY 2
