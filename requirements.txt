@@ -148,5 +148,6 @@ wheel==0.37.1
 widgetsnbextension==3.5.2
 wikipedia==1.4.0
 wincertstore==0.2
+xgboost==1.6.1
 yfinance==0.1.72
 zipp==3.7.0
