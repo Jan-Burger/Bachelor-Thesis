@@ -7,13 +7,16 @@ Project Organization
 ------------
 
     ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make data` or `make train`
-    ├── README.md          <- The top-level README for developers using this project.
+    ├── README.md          <- The top-level README file.
     ├── data
-    │   ├── external       <- Data from third party sources.
-    │   ├── interim        <- Intermediate data that has been transformed.
-    │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The original, immutable data dump.
+    │   ├── external       <- Data from third party sources such as annotations from bit.to.
+    │   ├── raw        <- Raw reddit posts and comments data with stock mentions (1.4m entries).
+    │   ├── sentiment_analysis_predictions      <- Sentiment Analysis predictions data for the three stocks GME, AMC and SPY.
+    │   ├──sentiment_analysis_results            <- Results of the sentiment analysis.
+    │   └── stock_prediction            <- Data used for stock prediction and their results.
+    │   │   ├── correlation_results            <- Results of the correlation analysis.
+    │   │   ├── stock_prediction_data            <- Results of the correlation analysis.
+    │   │   └── stock_prediction_model_results            <- Results of the correlation analysis.
     │
     ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
     │
