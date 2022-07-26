@@ -31,9 +31,9 @@ Project Organization
     │   │   ├── finetuned_transformer_runs        <- Finetuning of the transformer models.
     │   │   ├── pretrained_transformer_runs       <- Transformer model perfromance before finetuning.
     │   │   └── wandb                             <- data for w&b tracking.
-    │   ├── stock_prediction                      <- Notebooks for stock prediction and correlation analysis.
-    │   │   ├── correlation_calculation           <- correlation analysis.
-    │   │   └── predictive_modeling               <- predictive modeling part.
+    │   └── stock_prediction                      <- Notebooks for stock prediction and correlation analysis.
+    │       ├── correlation_calculation           <- correlation analysis.
+    │       └── predictive_modeling               <- predictive modeling part.
     │
     └── requirements.txt                          <- The requirements file for reproducing the analysis environment, e.g.
                                                      generated with `pip freeze > requirements.txt`
